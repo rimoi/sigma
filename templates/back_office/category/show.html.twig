@@ -1,0 +1,38 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Voir {{ category.title }}{% endblock %}
+
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('admin_dash_board_index') }}">Dashboard</a></li>
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin_category_index') }}">Tags</a>
+        </li>
+        <li class="breadcrumb-item active">{{ block('title') }}</li>
+    </ol>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary text-center">Tag {{ category.title }}</h6>
+        </div>
+        <div class="card-body">
+            {{ category.description|raw }}
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <a href="{{ path('admin_category_index') }}" class="btn btn-secondary">
+                <span class="fa fa-arrow-left"></span>
+                Liste des Tags
+            </a>
+            <a href="{{ path('admin_category_edit', {id: category.id}) }}" class="btn btn-success">
+                <span class="fa fa-pencil-alt"></span>
+                Modifier
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

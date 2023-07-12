@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mission {{ mission.title }}{% endblock %}
+
+{% block description %}
+    {{ mission.content|u.truncate(200, '...')|raw }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        body.swal2-shown > [aria-hidden="true"] {
+            transition: 0.1s filter;
+            filter: blur(1.5rem);
+        }
+    </style>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function () {
+           $('.js-show-image').on('click', function (e) {
+                e.preventDefault();
+
+                let image =  $(this).attr('src');
+                let label =  $(this).data('label');
+               Swal.fire({
+                   width: 700,
+                   imageUrl: image,
+                   imageHeight: 700,
+                   imageWidth: 700,
+                   imageAlt: label,
+                   text: label,
+                   title: label,
+                   confirmButtonText:'<i class="fa fa-thumbs-up"></i> J\'ai vu !',
+               })
+           });
+        });
+    </script>
+{% endblock %}
+
+
+
+{% block body %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-1 text-white animated slideInDown">{{ mission.title|capitalize }}</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ path('home') }}">Accueil</a></li>
+                                        <li class="breadcrumb-item"><a class="text-white" href="{{ path('front_mission') }}">Projets</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">{{  mission.title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+{#                    <h4 class="section-title">Why Choose Us!</h4>#}
+                    <h1 class="display-5 mb-4">{{ mission.title }}</h1>
+                    <p class="mb-4">
+                        {{ mission.content|raw }}
+                    </p>
+                    <div class="row g-4">
+{#                        <div class="col-12">#}
+{#                            <div class="d-flex align-items-start">#}
+{#                                <img class="flex-shrink-0" src="img/icons/icon-2.png" alt="Icon">#}
+{#                                <div class="ms-4">#}
+{#                                    <h3>Design Approach</h3>#}
+{#                                    <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                        {% for tag in mission.categories %}
+                            <div class="col-12">
+                                <div class="d-flex align-items-start">
+                                    <img class="flex-shrink-0" src="{{ asset('arkitektur/img/icons/icon-3.png') }}" alt="Icon">
+                                    <div class="ms-4">
+                                        <h3>{{ tag.title }}</h3>
+                                        <p class="mb-0">{{ tag.description|raw }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+{#                        <div class="col-12">#}
+{#                            <div class="d-flex align-items-start">#}
+{#                                <img class="flex-shrink-0" src="img/icons/icon-4.png" alt="Icon">#}
+{#                                <div class="ms-4">#}
+{#                                    <h3>Project Management</h3>#}
+{#                                    <p class="mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet.</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+
+                    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                        {% if mission.file %}
+                            <div class="testimonial-item text-center js-show-image"
+                                 data-dot="<img class='img-fluid js-show-image' src='{{ app.request.getSchemeAndHttpHost() ~ '/' ~ upload_folder ~ '/' ~ mission.file.name }}' alt='Image {{ mission.title }}'>">
+                            </div>
+                        {% endif %}
+
+                        {% for experience in mission.experiences %}
+                            {% if experience.file %}
+                                <div class="testimonial-item text-center "
+                                     data-dot="<img class='img-fluid js-show-image' src='{{ app.request.getSchemeAndHttpHost() ~ '/' ~ upload_folder ~ '/' ~ experience.file.name }}' alt='{{ experience.title }}'>">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

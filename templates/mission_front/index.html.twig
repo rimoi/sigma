@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des projets{% endblock %}
+
+{% block description %}
+{% endblock %}
+
+{% block body %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-1 text-white animated slideInDown">Nos Projets</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ path('home') }}">Accueil</a></li>
+{#                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>#}
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Nos Projects</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Project Start -->
+    <div class="container-xxl project py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">Nos Projects</h4>
+                <h1 class="display-5 mb-4">Vous trouvez la liste de nos dernières missions</h1>
+            </div>
+            <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4">
+                    <div class="nav nav-pills d-flex justify-content-between w-100 h-100 me-4">
+                        {% for mission in projects %}
+                            <button class="nav-link w-100 d-flex align-items-center text-start p-4 mb-4 {{ loop.first ? 'active' }}" data-bs-toggle="pill" data-bs-target="#tab-pane-{{ mission.id }}" type="button">
+                                <h3 class="m-0">{{ mission.title }}</h3>
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-content w-100">
+                        {% for mission in projects %}
+                            <div class="tab-pane fade show {{ loop.first ? 'active' }}" id="tab-pane-{{ mission.id }}">
+                                <div class="row g-4">
+                                    <div class="col-md-6" style="min-height: 350px;">
+                                        <div class="position-relative h-100">
+                                            {% if mission.file %}
+                                                <img class="position-absolute img-fluid w-100 h-100"
+                                                     src="{{ upload_folder ~ '/' ~mission.file.name }}"
+                                                     style="object-fit: cover;" alt="">
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h1 class="mb-3">{{ mission.title }}</h1>
+                                        <p class="mb-4">
+                                            {{ mission.content|u.truncate(181, '...')|raw }}
+                                        </p>
+                                        {% for tag in mission.categories %}
+                                            <p><i class="fa fa-check text-primary me-3"></i>{{ tag.title }}</p>
+                                        {% endfor %}
+                                        <a href="{{ path('front_mission_show', {slug: mission.slug}) }}" class="btn btn-primary py-3 px-5 mt-3">Lire plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project End -->
+
+{% endblock %}

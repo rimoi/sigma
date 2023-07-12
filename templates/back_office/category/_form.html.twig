@@ -1,0 +1,34 @@
+<div class="card-body">
+    <div class="p-5">
+        {{ form_start(form, {'attr': {'class': 'user'}}) }}
+
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(form.title) }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                {{ form_row(form.description) }}
+            </div>
+        </div>
+        <hr>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 my-1 text-left">
+            {% if category is defined and category.id %}
+                <a href="#" class="btn btn-danger js-deleted" data-url="{{ path('admin_category_archived', {id: category.id }) }}">
+                    Supprimer
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-12 col-lg-6 my-1 text-right">
+            <a href="{{ path('admin_category_index') }}" class="btn btn-secondary">Fermer</a>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="keywords" content="SIGMA, ENGINEERING, mauritanie, génie civile, construction mauritanie">
+		<meta name="author" content="SIMGA">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta name="description" content="{% block description '' %}"/>
+		<link rel="icon" href="{{ asset('images/sigma.ico') }}">
+		{% block meta_robots '' %}
+
+		<title>
+			{% block title %}{% endblock %} - SIGMA ENGINEERING
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		
+		{% block stylesheets %}
+{#			{{ encore_entry_link_tags('app') }}#}
+
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap" rel="stylesheet">
+
+			<!-- Icon Font Stylesheet -->
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+			<link href="{{ asset('arkitektur/lib/animate/animate.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('arkitektur/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('arkitektur/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('arkitektur/css/bootstrap.min.css') }}" rel="stylesheet">
+			<link href="{{ asset('arkitektur/css/style.css') }}" rel="stylesheet">
+		{% endblock %}
+	</head>
+	<body>
+		<!-- Spinner End -->
+		{% include "includes/_nav.html.twig" %}
+		{% include "includes/_notice.html.twig" %}
+		{% block body %}
+		{% endblock %}
+
+		{% block _footer %}
+			{% include "includes/_footer.html.twig" %}
+		{% endblock %}
+
+		{% block javascripts %}
+			<script src="{{ asset('arkitektur/js/jquery.js') }}"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="{{ asset('arkitektur/lib/wow/wow.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/easing/easing.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/waypoints/waypoints.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/counterup/counterup.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/tempusdominus/js/moment.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+			<script src="{{ asset('arkitektur/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+			<script src="{{ asset('arkitektur/js/main.js') }}"></script>
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+			<script>
+				if ($('.js-show-cookie').length) {
+					$('.js-save-cookie-modal').on('click', function (e) {
+						e.preventDefault();
+
+						setCookie("session-cookie-condition", "123456789", 7);
+
+						$('.js-close-modal').trigger('click');
+
+						Swal.fire({
+							icon: 'success',
+							title: 'Cookie sauvegardé',
+							showConfirmButton: false,
+							timer: 1500
+						});
+
+						$('.js-show-cookie').fadeOut('slow');
+					});
+
+					$('.js-save-cookie').on('click', function (e) {
+						e.preventDefault();
+
+						setCookie("session-cookie-condition", "123456789", 7);
+
+						Swal.fire({
+							icon: 'success',
+							title: 'Cookie sauvegardé',
+							showConfirmButton: false,
+							timer: 1500
+						});
+
+						$('.js-show-cookie').fadeOut('slow');
+					});
+				}
+			</script>
+
+{#			{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
+	</body>
+</html>

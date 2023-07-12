@@ -1,0 +1,223 @@
+.banniere {
+    /*background-image: url(../../public/images/banniere.png);*/
+    background-size: cover;
+    height: 64vh;
+    width: 100vw;
+}
+
+.banniere div {
+    padding: 1rem;
+}
+
+.js-plateforme {
+    height: 224px;
+}
+
+.cs-video {
+    margin-top: 107px;
+    margin-bottom: 150px;
+}
+.cs-iframe {
+    height: 41rem;
+    width: 111rem;
+}
+
+.banniere div h1 {
+    font-size:calc(12px + 2.3vw);
+    font-weight: bold;
+}
+
+.banniere div h1 span {
+    color: #dd1e3a;
+}
+
+.banniere div img {
+    height: 20vh;
+    margin-top: 3rem;
+    margin-right: 2rem;
+}
+
+/* Fleche scroll */
+.banniere .scroll-arrow {
+    width: 50vw;
+    position: absolute;
+    bottom: -80px;
+  }
+  
+  .scroll-arrow a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #dd1e3a;
+  }
+  
+  .scroll-arrow i {
+    font-size: 100px;
+    color: #dd1e3a;
+  }
+
+.card {
+    margin: 10px 10px 10px 0;
+}
+
+#logoNav {
+    width: 100%;
+}
+
+#adminButtons {
+    width: 2rem;
+    margin: 1px;
+}
+
+.mission {
+    background-color: #737373;
+    margin-bottom: 100px;
+    display: flex;
+    width: 100vw;
+    height: 60vh;
+}
+
+/* SECTION NOS SERVICES */
+
+.services {
+    text-align: center;
+    background-color: whitesmoke;
+    padding: 0 0 28px;
+    margin-top: 0;
+}
+
+.actualites h2, .services h2 {
+    margin: 50px;
+    font-size: 3rem;
+}
+
+
+
+/*.services-box {*/
+/*    display: flex;*/
+/*    margin-bottom : 50px;*/
+/*    width: 100vw;*/
+/*    justify-content: space-around;*/
+/*}*/
+
+.service1,
+.service2,
+.service3 {
+    padding: 10px;
+    width: 30%;
+}
+
+.service2 {
+    border-left: 1px dashed blue;
+    border-right: 1px dashed blue;
+}
+
+.service-img {
+    font-size: 5rem;
+}
+
+/* .services i {
+    color: #fab885;
+} */
+
+.js-form-search {
+    margin-top: -2rem;
+}
+
+@media (min-width: 915px) and (max-width: 1700px) {
+    .banniere {
+        height: 92vh;
+    }
+}
+
+@media (max-width: 913px) {
+    .js-form-search {
+        margin-top: -1rem;
+    }
+
+    .banniere {
+        height: 44vh;
+    }
+
+    .banniere div h1 {
+        font-size:calc(15px + 2.3vw);
+    }
+
+
+    .banniere div {
+        padding: 12px;
+    }
+
+    .cs-iframe {
+        height: 29rem;
+        width: 53rem;
+    }
+}
+@media (min-width: 576px) and (max-width: 922px) {
+    .services {
+        padding: 145px 0 19px;
+    }
+    .banniere {
+        height: 51vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .banniere {
+        height: 36vh;
+    }
+    .banniere div {
+        /*padding: 86px 21px 0;*/
+        padding: 9px;
+    }
+
+    .services {
+        padding: 277px 0 19px;
+    }
+
+    .cs-login {
+        margin-top: 39px;
+    }
+
+    .service1,
+    .service2,
+    .service3 {
+        border: none;
+        padding: 24px;
+        width: 30%;
+    }
+    #contact {
+        margin-bottom: 36px;
+    }
+    .cs-image-actualite {
+        margin-left: -69px;
+    }
+
+    #news .carousel-item .item h1 {
+        font-size: 1rem;
+    }
+
+    .js-form-search {
+        margin-top: -1rem;
+    }
+    #intro1 h2, .actualites h2 {
+        font-size: calc(16px + 2.3vw);
+        font-weight: bold;
+    }
+    .js-plateforme {
+        height: 140px;
+    }
+
+    .cs-video {
+        margin-top: 80px;
+        margin-bottom: 88px;
+    }
+    .cs-iframe {
+        height: auto;
+        width: auto;
+    }
+}
+@media (max-width: 375px) {
+    .banniere {
+        height: 48vh;
+    }
+}

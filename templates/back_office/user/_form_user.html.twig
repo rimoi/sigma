@@ -1,0 +1,88 @@
+{% import 'macros/_macro_upload.html.twig' as upload %}
+
+<div class="card-body">
+    <div class="p-5">
+        {{ form_start(form, {'attr': {'class': 'user'}}) }}
+
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                {{ form_row(form.gender) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                {{ form_row(form.lastname) }}
+            </div>
+            <div class="col-12 col-lg-4">
+                {{ form_row(form.firstname) }}
+            </div>
+            <div class="col-12 col-lg-4">
+                {{ form_row(form.telephone) }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            {% set mot_passe_info = '( si vous ne rempplisser pas cette case le mot de passe ne serait pas changer )' %}
+            {% if 'email' in form|keys %}
+                {% set mot_passe_info = '' %}
+                <div class="col-12 col-lg-6">
+                    {{ form_row(form.email) }}
+                </div>
+            {% else %}
+                <div class="col-12 col-lg-6">
+                    <div class="mb-3">
+                        <label for="profile_form_con" class="form-label required">Email</label>
+                        <input disabled type="text" id="profile_form_con" name="profile_form[con]" class="form-control" value="{{ user ? user.email : '' }}">
+                    </div>
+                </div>
+            {% endif %}
+            <div class="col-12 col-lg-6">
+                {{ form_row(form.plainPassword, {
+                    label: 'Mot de passe '
+                }) }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                {{ form_row(form.adress) }}
+            </div>
+        </div>
+        <hr>
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                {{ form_row(form.enabled, {
+                    label: "Activer l'utilisateur ?"
+                }) }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div>
+                    {{ form_label(form.roles, "Choisir un/plusieurs role(s) de l'utilisateur") }}
+                </div>
+                {{ form_widget(form.roles, {
+                    label: "Choisir un/plusieur role(s) de l'utilisateur"
+                }) }}
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 my-1 text-left">
+            {% if user is defined and user.id %}
+                <a href="#" class="btn btn-danger js-deleted" data-url="{{ path('admin_user_archived', {slug: user.slug }) }}">
+                    Supprimer
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-12 col-lg-6 my-1 text-right">
+            <a href="{{ path('admin_profile_index') }}" class="btn btn-secondary">Fermer</a>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

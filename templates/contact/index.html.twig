@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Contact{% endblock %}
+
+{% block description %}
+    Envoyez-nous un email à pour toute demande d'information
+{% endblock %}
+
+{% block body %}
+
+
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="section-title">Contactez-nous</h4>
+                <h1 class="display-5 mb-4">Si vous avez des questions, n'hésitez pas à nous contacter.</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column justify-content-between h-100">
+                        <div class="bg-light d-flex align-items-center w-100 p-4 mb-4">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-dark" style="width: 55px; height: 55px;">
+                                <i class="fa fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-2">Adresse</p>
+                                <h3 class="mb-0">23 Avenue claude monet</h3>
+                            </div>
+                        </div>
+                        <div class="bg-light d-flex align-items-center w-100 p-4 mb-4">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-dark" style="width: 55px; height: 55px;">
+                                <i class="fa fa-phone-alt text-primary"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-2">Appelez-nous</p>
+                                <h3 class="mb-0">+222 2251 1446</h3>
+                            </div>
+                        </div>
+                        <div class="bg-light d-flex align-items-center w-100 p-4">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-dark" style="width: 55px; height: 55px;">
+                                <i class="fa fa-envelope-open text-primary"></i>
+                            </div>
+                            <div class="ms-4">
+                                <p class="mb-2">Email</p>
+                                <h3 class="mb-0">contact@sigma-engineering.mr</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    {{ form_start(form) }}
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                {{ form_row(form.email, {'attr': {class: 'form-floating'}}) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form_row(form.name, {'attr': {class: 'form-floating'}}) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_row(form.phone, {'attr': {class: 'form-floating'}}) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_row(form.content, {'attr': {class: 'form-floating'}}) }}
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Envoyer</button>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Google Map Start -->
+    <div class="container-xxl pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
+        <iframe class="w-100 mb-n2" style="height: 450px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7585.752613188706!2d-15.950029482780785!3d18.077280081444634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe96525d0da9797b%3A0x478a479be4bb4b2f!2sTen%20Sweilim%2C%20Nouakchott%2C%20Mauritanie!5e0!3m2!1sfr!2sfr!4v1688494522087!5m2!1sfr!2sfr"
+                frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" ></iframe>
+    </div>
+{% endblock %}
