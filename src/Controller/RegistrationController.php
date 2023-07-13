@@ -34,6 +34,50 @@ class RegistrationController extends AbstractController
         $this->urlGenerator = $urlGenerator;
     }
 
+    #[Route('/inscription-root', name: 'app_root')]
+    public function registerRoot(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+        UserAuthenticatorInterface $userAuthenticator,
+        UsersAuthenticator $authenticator
+    ): Response
+    {
+
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            
+            $user->setRoles(['ROLE_ADMIN']);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $notice = 'Félicitation votre compte à bien été créé';
+            
+            $this->addFlash('success', $notice);
+
+             return $userAuthenticator->authenticateUser(
+                 $user,
+                 $authenticator,
+                 $request
+             );
+        }
+
+        return $this->renderForm('registration/register.html.twig', [
+            'registrationForm' => $form,
+        ]);
+    }
+
     #[Route('/inscription', name: 'app_register')]
     public function register(
         Request $request,
@@ -55,7 +99,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            
+
             $status = $form->get('statut')->getData();
             $user->setRoles([$status]);
 

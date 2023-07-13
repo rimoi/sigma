@@ -33,9 +33,6 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'placeholder' => '0606060606'
                 ],
-                'constraints' => [
-                    new Regex('/0\d{9}/')
-                ],
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom(*)',
@@ -53,15 +50,6 @@ class RegistrationFormType extends AbstractType
                 'choices' => GenderConstant::MAP,
                 'label' => 'Civilité(*)',
             ])
-            ->add('statut', ChoiceType::class, [
-                'choices' => [
-                    'Les extras freelances' => UserConstant::ROLE_FREELANCE,
-                    'Les extras clients' => UserConstant::ROLE_CLIENT,
-                ],
-                'label' => "S'incrire en tant que(*) :",
-                'mapped' => false
-            ]
-            )
             ->add('email', EmailType::class, [
                 'label' => 'E-mail(*)',
                 'attr' => [

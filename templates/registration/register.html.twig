@@ -2,13 +2,6 @@
 
 {% block title %}Inscription{% endblock %}
 
-{% block _footer '' %}
-
-
-{% block description %}
-	Ici vous pourrez facilement réserver une mission un accord avec votre recherche. Alors n'hésitez pas à vous connecter ou vous inscrire si ce n'est pas déjà fait !
-{% endblock %}
-
 {% block body %}
 
 	<div class="container-fluid">
@@ -23,8 +16,8 @@
 						<div id="separator"></div>
 						<br>
 						<h2 id="welcome">Bienvenue</h2>
-						<p id="description-register">SUR LE PORTAIL D'ADMINISTRATION DEDIE AUX USAGERS D'ADEPA !</p>
-						<p>Ici vous pourrez facilement proposer vos prestations ou en réserver une. Alors n'hésitez pas à vous connecter ou vous inscrire si ce n'est pas déjà fait !</p>
+						<p id="description-register">SUR LE PORTAIL D'ADMINISTRATION DEDIE AUX Admin SIGMA !</p>
+						<p>N'hésitez pas à vous connecter ou vous inscrire si ce n'est pas déjà fait !</p>
 					</div>
 				</div>
 			</div>
@@ -68,12 +61,6 @@
 									{{ form_row(registrationForm.plainPassword, {
 										label: 'Mot de passe'
 									}) }}
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="col-12">
-									{{ form_row(registrationForm.statut) }}
 								</div>
 							</div>
 
