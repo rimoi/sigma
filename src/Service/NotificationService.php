@@ -22,13 +22,15 @@ class NotificationService
     private EntityManagerInterface $entityManager;
     private UrlGeneratorInterface $urlGenerator;
     private MessageBird $messageBird;
+    private string $receiverContact;
 
     public function __construct(
         MailerInterface $mailer,
         string $mailerSender,
         EntityManagerInterface $entityManager,
         UrlGeneratorInterface $urlGenerator,
-        MessageBird $messageBird
+        MessageBird $messageBird,
+        string $receiverContact
     )
     {
         $this->mailer = $mailer;
@@ -36,6 +38,7 @@ class NotificationService
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->messageBird = $messageBird;
+        $this->receiverContact = $receiverContact;
     }
 
     public function infoUserMission(Mission $mission, string $type = NotificationConstant::EMAIL, array $users = []): void
@@ -255,7 +258,7 @@ class NotificationService
 
         $templateEmail = (new TemplatedEmail())
             ->from(new Address($this->mailerSender, 'SIGMA ENGINEERING'))
-            ->to($this->mailerSender)
+            ->to($this->receiverContact)
             ->subject('SIGMA ENGINEERING - Prise de contact ')
             ->htmlTemplate($template)
             ->context([

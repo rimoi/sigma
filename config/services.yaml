@@ -16,6 +16,7 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             string $mailerSender: '%env(resolve:MAILER_SENDER)%'
+            string $receiverContact: '%env(resolve:MAILER_RECEIVER)%'
             string $tokenMessageBird: '%env(MESSAGE_BIRD_TOKEN)%'
 
     # makes classes in src/ available to be used as services

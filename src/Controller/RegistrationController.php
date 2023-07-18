@@ -43,7 +43,6 @@ class RegistrationController extends AbstractController
         UsersAuthenticator $authenticator
     ): Response
     {
-
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -63,7 +62,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             $notice = 'Félicitation votre compte à bien été créé';
-            
+
             $this->addFlash('success', $notice);
 
              return $userAuthenticator->authenticateUser(
