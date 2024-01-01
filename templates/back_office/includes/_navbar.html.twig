@@ -86,6 +86,43 @@
         </li>
     {% endif %}
 
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        A propos
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_back_office_about_index') }}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>A propos</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Flux RSS
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_back_office_flux_rss_new') }}">
+            <i class="fas fa-fw fa-plus"></i>
+            <span>Nouveau Flux</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_back_office_flux_rss_index') }}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>Les Flux RSS</span>
+        </a>
+    </li>
+
     {% if is_granted('ROLE_ADMIN') %}
         <!-- Divider -->
         <hr class="sidebar-divider">

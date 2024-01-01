@@ -59,6 +59,18 @@ class MissionType extends AbstractType
                 'label' => 'Nom de la mission: (*)',
                 'attr' => ['placeholder' => 'Ex: Constructeur Hôpital'],
             ])
+            ->add('type', ChoiceType::class, [
+                'label' => 'Type de mission: (*)',
+                'choices' => [
+                    "Service ( Apparaîtra sur la page d'accueil) " =>  MissionTypeConstant::SERVICE,
+                    "Project ( Apparaîtra dans l'onglet Mes projets ) " => MissionTypeConstant::PROJECT,
+                ],
+                'attr' => [
+                    'class' => 'js-select2',
+                    'style' => "width: 100%;",
+                    'placeholder' => 'Choisir votre Tag'
+                ],
+            ])
             ->add('content', CKEditorType::class, [
                 'required' => 'false',
                 'label' => 'false',

@@ -1,0 +1,90 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('datatable') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('datatable') }}
+{% endblock %}
+
+
+{% block body %}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('admin_dash_board_index') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active">{{ block('title') }}</li>
+</ol>
+
+<div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">A propos</h1>
+    <div class="text-right">
+        <a class="btn btn-outline-primary my-3" href="{{ path('admin_category_new') }}">
+            <span class="fa fa-plus-square"></span>
+            Nouvelle Page A propos
+        </a>
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"></h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Année d'experience</th>
+                            <th>Image de fond</th>
+                            <th>Premier image</th>
+                            <th>Deuxième Image</th>
+                            <th>Description</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for about in abouts %}
+                        <tr>
+                            <td>{{ about.title }}</td>
+                            <td>{{ about.year }} ans</td>
+                            <td>
+                                {% if about.backgroundImage %}
+                                    <img class="img-fluid w-25" src="{{ asset(photo_directory ~'/'~about.backgroundImage.name) }}" alt="Image {{ about.backgroundImage.name }}">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if about.firstFile %}
+                                    <img class="img-fluid w-25" src="{{ asset(photo_directory ~'/'~about.firstFile.name) }}" alt="Image {{ about.firstFile.name }}">
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if about.secondFile %}
+                                    <img class="img-fluid w-25" src="{{ asset(photo_directory ~'/'~about.secondFile.name) }}" alt="Image {{ about.secondFile.name }}">
+                                {% endif %}
+                            </td>
+                            <td>{{ about.description|u.truncate(255, '...')|raw }}</td>
+                            <td>
+                                <a href="{{ path('app_back_office_about_edit', {'id': about.id}) }}" class="btn btn-primary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Pas de page a propos
+                                <a href="{{ path('app_back_office_about_new') }}">Veuillez créer une</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

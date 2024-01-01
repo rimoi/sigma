@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.year) }}
+    {{ form_row(form.description) }}
+
+    <div class="d-flex">
+        {{ form_row(form.backgroundImage) }}
+        {% if about.backgroundImage %}
+            <img class="img-fluid" width="200px" height="150px" src="{{ asset(photo_directory ~'/'~about.backgroundImage.name) }}" alt="Image {{ about.backgroundImage.name }}">
+        {% endif %}
+    </div>
+
+    <div class="d-flex my-5">
+        {{ form_row(form.firstFile) }}
+        {% if about.firstFile %}
+            <img class="img-fluid" width="200px" height="50px" src="{{ asset(photo_directory ~'/'~about.firstFile.name) }}" alt="Image {{ about.firstFile.name }}">
+        {% endif %}
+    </div>
+    <div class="d-flex">
+        {{ form_row(form.secondFile) }}
+        {% if about.secondFile %}
+            <img class="img-fluid" width="200px"  height="50px" src="{{ asset(photo_directory ~'/'~about.secondFile.name) }}" alt="Image {{ about.secondFile.name }}">
+        {% endif %}
+    </div>
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

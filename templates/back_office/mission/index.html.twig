@@ -40,6 +40,7 @@
                         <thead>
                         <tr>
                             <th>Titre</th>
+                            <th>Scope</th>
                             <th>Crée</th>
                             <th>Publiée</th>
                             <th>Début</th>
@@ -51,6 +52,7 @@
                         {% for mission in missions %}
                             <tr>
                                 <td>{{ mission.title }}</td>
+                                <td>{{ mission.type }}</td>
                                 <td>{{ mission.createdAt ? mission.createdAt|date('Y-m-d H:i') : '' }}</td>
                                 <td>
                                     {% if mission.published %}

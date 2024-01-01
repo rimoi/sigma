@@ -11,7 +11,7 @@
 	<div class="row gx-0 d-none d-lg-flex">
 		<div class="col-lg-7 px-5 text-start">
 			<div class="h-100 d-inline-flex align-items-center py-3 me-3">
-				<a class="text-body px-2" href="tel:+22222511446"><i class="fa fa-phone-alt text-primary me-2"></i>+222 22 51 14 46</a>
+				<a class="text-body px-2" href="tel:+22222511446"><i class="fa fa-phone-alt text-primary me-2"></i>+222 42 11 47 26</a>
 				<a class="text-body px-2" href="mailto:contact@sigma-engineering.mr"><i class="fa fa-envelope-open text-primary me-2"></i>contact@sigma-engineering.mr</a>
 			</div>
 		</div>
@@ -42,16 +42,15 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarCollapse">
 		<div class="navbar-nav ms-auto p-4 p-lg-0">
-			<a href="{{ path('home') }}" class="nav-item nav-link active">Accueil</a>
-			<a href="{{ path('app_about') }}" class="nav-item nav-link">A propos</a>
-{#			<a href="service.html" class="nav-item nav-link">Services</a>#}
-			<a href="{{ path('front_mission') }}" class="nav-item nav-link">Projets</a>
+			<a href="{{ path('home') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'home' ? 'btn-force' }}">Accueil</a>
+			<a href="{{ path('app_about') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_about' ? 'btn-force' }}">A propos</a>
+			<a href="{{ path('front_mission') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'front_mission' ? 'btn-force' }}">Projets</a>
+			<a href="{{ path('app_contact') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_contact' ? 'btn-force' }}">Contact</a>
+			{% if app.user %}
+				<a href="{{ path('admin_dash_board_index') }}" class="nav-item nav-link">Admin</a>
+				<a href="{{ path('app_logout') }}" class="nav-item nav-link">Déconnexion</a>
+			{% endif %}
 		</div>
-		<a href="{{ path('app_contact') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">Contact</a>
-		{% if app.user %}
-			<a href="{{ path('admin_dash_board_index') }}" class="nav-item nav-link">Admin</a>
-			<a href="{{ path('app_logout') }}" class="nav-item nav-link">Déconnexion</a>
-		{% endif %}
 	</div>
 </nav>
 <!-- Navbar End -->

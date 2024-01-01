@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_back_office_about_delete', {'id': about.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimée ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ about.id) }}">
+    <button class="btn btn-danger">Supprimé</button>
+</form>

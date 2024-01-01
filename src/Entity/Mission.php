@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Constant\MissionTypeConstant;
 use App\Repository\MissionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -85,10 +86,8 @@ class Mission
     #[ORM\OneToMany(mappedBy: 'mission', targetEntity: Experience::class, cascade: ['persist', 'remove'])]
     private Collection $experiences;
 
-    public function isPossibleToCancel(): bool
-    {
-        return $this->started > new \DateTime('+48 hours', new \DateTimeZone('Europe/Paris'));
-    }
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $type = MissionTypeConstant::PROJECT;
 
     public function __construct()
     {
@@ -379,6 +378,18 @@ class Mission
                 $experience->setMission(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

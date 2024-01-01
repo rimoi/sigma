@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Constant\MissionTypeConstant;
 use App\Entity\Booking;
 use App\Entity\Mission;
 use App\Form\SearchType;
@@ -24,7 +25,8 @@ class MissionFrontController extends AbstractController
         $projects = $entityManager->getRepository(Mission::class)->findBy(
             [
                 'archived' => false,
-                'published' => true
+                'published' => true,
+                'type' => MissionTypeConstant::PROJECT,
             ],
             ['id' => 'DESC']);
 

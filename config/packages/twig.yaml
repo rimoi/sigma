@@ -6,6 +6,7 @@ twig:
 
     globals:
        upload_folder: '%app.relative_path.image_directory%'
+       photo_directory: '%app.relative_path.image_directory%'
 
 
 when@test:

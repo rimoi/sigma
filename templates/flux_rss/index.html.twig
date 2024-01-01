@@ -1,0 +1,3 @@
+{% for fr in flux_rss %}
+    <a class="btn btn-square btn-outline-body me-{{ loop.last ? 0 : 1 }}" href="{{ fr.link }}" target="_blank" title="{{ fr.title }}"><i class="{{ fr.classFontAwesome }}"></i></a>
+{% endfor %}

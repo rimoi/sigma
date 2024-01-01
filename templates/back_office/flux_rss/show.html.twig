@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FluxRss{% endblock %}
+
+{% block body %}
+    <h1>FluxRss</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ flux_rss.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ flux_rss.title }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ flux_rss.link }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_office_flux_rss_index') }}">back to list</a>
+
+    <a href="{{ path('app_back_office_flux_rss_edit', {'id': flux_rss.id}) }}">edit</a>
+
+    {{ include('back_office/flux_rss/_delete_form.html.twig') }}
+{% endblock %}
